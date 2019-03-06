@@ -46,6 +46,8 @@ int			main(int ac, char **av)
 	t_stack	*b;
 	char	*line;
 
+	if (ac < 2)
+		return (0);
 	a = create_stack();
 	b = create_stack();
 	fill_stack(a, ac, av);
@@ -53,5 +55,7 @@ int			main(int ac, char **av)
 		call_op(get_code(line), a, b, 'm');
 	ft_putendl((sorted(a)) ? "\033[1;32mOK" : "\033[1;33mKO");
 	ft_putstr("\033[0m");
+	free_stack(a);
+	free_stack(b);
 	return (0);
 }

@@ -14,7 +14,7 @@
 
 /*
 ** Yes, I use a bubble sort here so I can do a more efficient sort later.
-** And yes, I specifically chose a bubble sort out of spite.
+** And yes, I did specifically chose a bubble sort out of spite.
 */
 
 static void	bubble_sort_array(int *array, int len)

@@ -33,6 +33,8 @@ int			main(int ac, char **av)
 	int		stack_len;
 	int		flag;
 
+	if (ac < 2)
+		return (0);
 	flag = 0;
 	a = create_stack();
 	b = create_stack();
@@ -46,5 +48,7 @@ int			main(int ac, char **av)
 		do_sort(a, b, stack_len);
 	if (flag)
 		print_stack(a);
+	free_stack(a);
+	free_stack(b);
 	return (0);
 }

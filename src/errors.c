@@ -59,7 +59,7 @@ void		check_is_integer(char *str)
 			sign = -1;
 		str++;
 	}
-	while (*str)
+	while (*str && *str != ' ')
 	{
 		if (!ft_isdigit(*str))
 			error_and_exit();

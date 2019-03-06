@@ -60,19 +60,6 @@ static int	get_partition(t_stack *a, t_stack *b, int len, int partition)
 	return (b_len);
 }
 
-static int	get_last_partition(t_stack *a, t_stack *b, int len)
-{
-	int	b_len;
-
-	b_len = 0;
-	while (len--)
-	{
-		call_op(pb, a, b, 0);
-		b_len++;
-	}
-	return (b_len);
-}
-
 static void	selection_sort_partition(t_stack *a, t_stack *b, int b_len)
 {
 	int	i;
@@ -94,7 +81,7 @@ void		quick_sort(t_stack *a, t_stack *b, int len)
 	unsorted_len = len;
 	pivot = get_median(a, len);
 	i = 1;
-	while (unsorted_len > batch)
+	while (unsorted_len)
 	{
 		b_len = get_partition(a, b, unsorted_len, pivot[(i * batch)]);
 		selection_sort_partition(a, b, b_len);
@@ -102,6 +89,5 @@ void		quick_sort(t_stack *a, t_stack *b, int len)
 		move_nth_to_top(a, 'a', len - unsorted_len, len);
 		i++;
 	}
-	b_len = get_last_partition(a, b, unsorted_len);
-	selection_sort_partition(a, b, b_len);
+	free(pivot);
 }
