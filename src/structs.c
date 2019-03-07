@@ -17,7 +17,7 @@ t_stack		*create_stack(void)
 	t_stack	*stack;
 
 	if (!(stack = (t_stack*)malloc(sizeof(t_stack))))
-		error_and_exit();
+		error_and_exit(NULL);
 	stack->top = NULL;
 	return (stack);
 }
@@ -27,7 +27,7 @@ t_node		*create_node(int num)
 	t_node	*node;
 
 	if (!(node = (t_node*)malloc(sizeof(t_node))))
-		error_and_exit();
+		error_and_exit(NULL);
 	node->n = num;
 	node->next = NULL;
 	return (node);
@@ -75,7 +75,7 @@ int			fill_stack(t_stack *s, int ac, char **av)
 	len = 0;
 	while (*str)
 	{
-		check_is_integer(str);
+		check_is_integer(str, s);
 		push_to_bottom(s, create_node(ft_atoi(str)));
 		len++;
 		if (ft_strchr(str, ' '))

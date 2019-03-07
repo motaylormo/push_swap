@@ -16,28 +16,27 @@ static int	get_code(char *str)
 {
 	if (ft_strequ(str, "sa"))
 		return (sa);
-	if (ft_strequ(str, "sb"))
+	else if (ft_strequ(str, "sb"))
 		return (sb);
-	if (ft_strequ(str, "ss"))
+	else if (ft_strequ(str, "ss"))
 		return (ss);
-	if (ft_strequ(str, "pa"))
+	else if (ft_strequ(str, "pa"))
 		return (pa);
-	if (ft_strequ(str, "pb"))
+	else if (ft_strequ(str, "pb"))
 		return (pb);
-	if (ft_strequ(str, "ra"))
+	else if (ft_strequ(str, "ra"))
 		return (ra);
-	if (ft_strequ(str, "rb"))
+	else if (ft_strequ(str, "rb"))
 		return (rb);
-	if (ft_strequ(str, "rr"))
+	else if (ft_strequ(str, "rr"))
 		return (rr);
-	if (ft_strequ(str, "rra"))
+	else if (ft_strequ(str, "rra"))
 		return (rra);
-	if (ft_strequ(str, "rrb"))
+	else if (ft_strequ(str, "rrb"))
 		return (rrb);
-	if (ft_strequ(str, "rrr"))
+	else if (ft_strequ(str, "rrr"))
 		return (rrr);
-	error_and_exit();
-	return (0);
+	return (-1);
 }
 
 int			main(int ac, char **av)
@@ -45,14 +44,23 @@ int			main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 	char	*line;
+	int		code;
 
 	if (ac < 2)
 		return (0);
 	a = create_stack();
-	b = create_stack();
 	fill_stack(a, ac, av);
+	b = create_stack();
 	while (get_next_line(0, &line))
-		call_op(get_code(line), a, b, 'm');
+	{
+		code = get_code(line);
+		if (code == -1)
+		{
+			free_stack(b);
+			error_and_exit(a);
+		}
+		call_op(code, a, b, 'm');
+	}
 	ft_putendl((sorted(a)) ? "\033[1;32mOK" : "\033[1;33mKO");
 	ft_putstr("\033[0m");
 	free_stack(a);

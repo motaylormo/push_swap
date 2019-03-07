@@ -37,13 +37,13 @@ int			main(int ac, char **av)
 		return (0);
 	flag = 0;
 	a = create_stack();
-	b = create_stack();
 	if (ft_strequ(av[1], "-v"))
 	{
 		flag = 1;
 		av++;
 	}
 	stack_len = fill_stack(a, ac, av);
+	b = create_stack();
 	if (a->top)
 		do_sort(a, b, stack_len);
 	if (flag)
