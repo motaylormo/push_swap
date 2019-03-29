@@ -99,7 +99,7 @@ void	print_stack(t_stack *s);
 ** errors.c
 */
 void	check_for_duplicates(t_stack *s);
-void	check_is_integer(char *str, t_stack *s);
-void	error_and_exit(t_stack *s);
+void	check_is_integer(char *str);
+void	error_and_exit(void);
 
 #endif

@@ -12,9 +12,8 @@
 
 #include "pushswap.h"
 
-void		error_and_exit(t_stack *s)
+void		error_and_exit(void)
 {
-	free_stack(s);
 	ft_putendl("\033[0;31mError");
 	ft_putstr("\033[0m");
 	exit(1);
@@ -40,12 +39,12 @@ void		check_for_duplicates(t_stack *s)
 			inner = inner->next;
 		}
 		if (tally != 1)
-			error_and_exit(s);
+			error_and_exit();
 		node = node->next;
 	}
 }
 
-void		check_is_integer(char *str, t_stack *s)
+void		check_is_integer(char *str)
 {
 	long	num;
 	int		sign;
@@ -63,10 +62,10 @@ void		check_is_integer(char *str, t_stack *s)
 	while (*str && *str != ' ')
 	{
 		if (!ft_isdigit(*str))
-			error_and_exit(s);
+			error_and_exit();
 		num = (num * 10) + (*str - '0');
 		str++;
 		if (num * sign > INT_MAX || num * sign < INT_MIN)
-			error_and_exit(s);
+			error_and_exit();
 	}
 }

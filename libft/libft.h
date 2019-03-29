@@ -6,7 +6,7 @@
 /*   By: mtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 14:47:09 by mtaylor           #+#    #+#             */
-/*   Updated: 2019/02/25 12:54:05 by mtaylor          ###   ########.fr       */
+/*   Updated: 2019/03/07 12:46:38 by mtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 /*
-** Extra functions
+** Extra functions added later
 */
 int				ft_atoibase(char *str, unsigned int base);
 char			*ft_itoabase(int n, unsigned int base);
@@ -89,18 +89,11 @@ char			*ft_dtoa(double n, int precision);
 /*
 ** get_next_line
 */
-# define RET_IF(cond, ret) if (cond) return (ret)
-# define BUFF_SIZE 32
-
-typedef struct	s_gnl
-{
-	struct s_gnl	*next;
-	struct s_gnl	*prev;
-	int				fd;
-	char			*str;
-	char			*overflow;
-}				t_gnl;
-
 int				get_next_line(const int fd, char **line);
+
+/*
+** ft_printf
+*/
+int				ft_printf(const char *format, ...);
 
 #endif

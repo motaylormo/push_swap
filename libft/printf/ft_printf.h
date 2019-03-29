@@ -6,7 +6,7 @@
 /*   By: mtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:19:43 by mtaylor           #+#    #+#             */
-/*   Updated: 2019/02/25 12:35:05 by mtaylor          ###   ########.fr       */
+/*   Updated: 2019/03/07 17:05:04 by mtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct	s_padding
 ** functs
 */
 
-int				ft_printf(const char *format, ...);
 t_fwplt			pf_get_fwplt(const char **str, t_fwplt fwplt, va_list ap);
 t_padding		pf_get_padding(int core_len, int extras_len, t_fwplt fwplt);
 int				pf_print_any_leading_char(int neg, t_fwplt fwplt);
